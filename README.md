@@ -1,3 +1,8 @@
+# single liner
+```
+wget -O - https://raw.githubusercontent.com/michaelhenkel/make_vrouter/master/run.sh | bash
+```
+# manual
 ```
 yum install kernel-devel
 mkdir /vrouter
