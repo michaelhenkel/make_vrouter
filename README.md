@@ -2,7 +2,7 @@ yum install kernel-devel
 mkdir /vrouter
 cd /vrouter
 git clone https://github.com/Juniper/contrail-vrouter
-curl -OL 
+curl -OL https://github.com/michaelhenkel/make_vrouter/raw/master/vrouter_libs.tgz
 tar zxvf vrouter_libs.tgz
 cat << EOF > contrail-vrouter/include/vr_buildinfo.h
 
