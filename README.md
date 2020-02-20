@@ -1,3 +1,4 @@
+```
 yum install kernel-devel
 mkdir /vrouter
 cd /vrouter
@@ -28,3 +29,4 @@ EOF
 cd contrail-vrouter
 gcc -o dp-core/vr_buildinfo.o -c -O0 -DDEBUG -g -D__VR_X86_64__ -D__VR_SSE__ -D__VR_SSE2__ -Iinclude -I ../build/debug/vrouter/sandesh/gen-c -I ../src/contrail-common dp-core/vr_buildinfo.c
 make -C /usr/src/kernels/3.10.0-1062.12.1.el7.x86_64 M=/vrouter/contrail-vrouter SANDESH_HEADER_PATH=/vrouter/build/debug/vrouter SANDESH_SRC_ROOT=../build/kbuild/ SANDESH_EXTRA_HEADER_PATH=/vrouter/src/contrail-common
+```
