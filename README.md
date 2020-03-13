@@ -11,6 +11,7 @@ docker build -t vrouter .
 ```
 
 ## Build against different kernel
+*check available Kernel versions here: https://hub.docker.com/r/linuxkit/kernel/tags
 ```
 cd make_vrouter
 docker build -t vrouter:4.19.104 --build-arg KERNELVER=4.19.104 .
