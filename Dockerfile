@@ -8,12 +8,12 @@ ARG CHERRYPICKREF=""
 RUN apk add build-base elfutils-dev git curl
 
 COPY --from=ksrc /kernel-dev.tar /
+COPY vrouter_libs.tgz /
 RUN tar xf kernel-dev.tar && \
-      curl -OL https://github.com/michaelhenkel/make_vrouter/raw/master/vrouter_libs.tgz && \
       mkdir /vrouter && \
       git clone ${CONTRAILREPO} /vrouter/contrail-vrouter -b ${CONTRAILVER} && \
       if [[ ! -z ${CHERRYPICKREF} ]]; then (cd /vrouter/contrail-vrouter && git config --global user.email "you@example.com" && git config --global user.name "Your Name" && git fetch "https://review.opencontrail.org/Juniper/contrail-vrouter" ${CHERRYPICKREF} && git cherry-pick FETCH_HEAD); fi && \
-      git clone https://github.com/Juniper/contrail-common /vrouter/src/contrail-common -b ${CONTRAILVER} && \
+      git clone https://github.com/tungstenfabric/tf-common /vrouter/src/contrail-common -b ${CONTRAILVER} && \
       tar zxvf vrouter_libs.tgz
 RUN cd /vrouter/contrail-vrouter && \
       gcc -o dp-core/vr_buildinfo.o -c -O0 -DDEBUG -g -D__VR_X86_64__ -D__VR_SSE__ -D__VR_SSE2__ -Iinclude -I ../vrouter_sandesh/sandesh/gen-c -I ../src/contrail-common dp-core/vr_buildinfo.c && \
